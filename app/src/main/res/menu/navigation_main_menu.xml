@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/coinlistFragment"
+            android:title="Coinlist"
+            android:icon="@drawable/ic_home"/>
+
+        <item
+            android:id="@+id/watchlistFragment"
+            android:title="Watchlist"
+            android:icon="@drawable/ic_list"/>
+
+        <item
+            android:id="@+id/mapsFragment"
+            android:title="Map"
+            android:icon="@drawable/ic_map"/>
+    </group>
+
+</menu>

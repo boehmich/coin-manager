@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/coinlistFragment">
+
+    <fragment
+        android:id="@+id/coinlistFragment"
+        android:name="com.example.coinmanager.coinlist.CoinlistFragment"
+        android:label="Coinlist"
+        tools:layout="@layout/coinlist_fragment" />
+    <fragment
+        android:id="@+id/watchlistFragment"
+        android:name="com.example.coinmanager.watchlist.WatchlistFragment"
+        android:label="Watchlist"
+        tools:layout="@layout/watchlist_fragment" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.coinmanager.map.MapFragment"
+        android:label="Maps"
+        tools:layout="@layout/fragment_map" />
+</navigation>
