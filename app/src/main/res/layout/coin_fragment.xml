@@ -27,7 +27,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Coin Name"
+            android:hint="Name"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -56,11 +56,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonSaveCoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Coin"
         android:layout_marginTop="20dp"
+        android:text="Save Coin"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 

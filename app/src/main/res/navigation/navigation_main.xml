@@ -6,11 +6,6 @@
     app:startDestination="@id/coinlistFragment">
 
     <fragment
-        android:id="@+id/coinlistFragment"
-        android:name="com.example.coinmanager.coinlist.CoinlistFragment"
-        android:label="Coinlist"
-        tools:layout="@layout/coinlist_fragment" />
-    <fragment
         android:id="@+id/watchlistFragment"
         android:name="com.example.coinmanager.watchlist.WatchlistFragment"
         android:label="Watchlist"
@@ -24,5 +19,19 @@
         android:id="@+id/coinFragment"
         android:name="com.example.coinmanager.coin.CoinFragment"
         android:label="coin_fragment"
-        tools:layout="@layout/coin_fragment" />
+        tools:layout="@layout/coin_fragment" >
+        <action
+            android:id="@+id/action_coinFragment_to_watchlistFragment"
+            app:destination="@id/watchlistFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/coinlistFragment"
+        android:name="com.example.coinmanager.coinlist.CoinlistFragment"
+        android:label="Coinlist"
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_coinlistFragment_to_coinFragment"
+            app:destination="@id/coinFragment"/>
+    </fragment>
 </navigation>
