@@ -20,4 +20,9 @@
         android:name="com.example.coinmanager.map.MapFragment"
         android:label="Maps"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/coinFragment"
+        android:name="com.example.coinmanager.coin.CoinFragment"
+        android:label="coin_fragment"
+        tools:layout="@layout/coin_fragment" />
 </navigation>
