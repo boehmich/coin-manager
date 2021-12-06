@@ -20,4 +20,7 @@ interface CoinDAO {
 
     @Delete
     fun delete(coin: Coin)
+
+    @Query("DELETE FROM Coins")
+    fun deleteTable()
 }

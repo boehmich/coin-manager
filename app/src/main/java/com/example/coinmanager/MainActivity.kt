@@ -14,6 +14,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
+import com.example.coinmanager.database.CoinManagerDatabase
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +30,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val database = Room.databaseBuilder(
+            this,
+            CoinManagerDatabase::class.java,
+            "CoinManager"
+        ).allowMainThreadQueries()
+            .build()
+
+        repository = Repository(database)
+        
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -53,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.coinlistFragment, R.id.watchlistFragment , R.id.mapsFragment -> {
+                R.id.coinlistFragment, R.id.watchlistFragment , R.id.mapsFragment, R.id.coinFragment -> {
                     toolbar?.visibility = View.VISIBLE
                     drawerLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                     actionBarDrawerToggle.syncState()
