@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="horizontal"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvCoinId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID"
+        android:paddingTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutWatchlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/tvCoinId"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvCoinName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/tvCoinSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Symbol" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCoinPricePurchased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:layout_marginStart="30dp"
+        android:text="Kaufpreis"
+        app:layout_constraintStart_toEndOf="@+id/linearLayoutWatchlist"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCoinPriceActual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:layout_marginStart="15dp"
+        android:text="Aktueller Preis"
+        app:layout_constraintStart_toEndOf="@+id/tvCoinPricePurchased"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCoinPercentChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preisänderung"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

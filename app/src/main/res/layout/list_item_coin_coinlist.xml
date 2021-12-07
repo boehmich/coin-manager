@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="horizontal"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvCoinApiId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID"
+        android:paddingTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/tvCoinApiId"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvCoinApiName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/tvCoinApiSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Symbol" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvCoinApiPercent24h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:layout_marginStart="70dp"
+        android:text="24h%"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCoinApiPercent7d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7d%"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvCoinApiPrice"
+        app:layout_constraintStart_toEndOf="@+id/tvCoinApiPercent24h"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCoinApiPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preis"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

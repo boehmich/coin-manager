@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         repository = Repository(database)
-        
+
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
