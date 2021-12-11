@@ -4,8 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coinmanager.CoinApi
+import com.example.coinmanager.Coin
+import com.example.coinmanager.CoinWithUpdate
 import com.example.coinmanager.R
 
 
@@ -18,7 +21,7 @@ class CoinWatchlistViewHolder(val listItemContactRootView: View): RecyclerView.V
     val coinPriceChangedPercentTextView: TextView = listItemContactRootView.findViewById(R.id.tvCoinPercentChange)
 }
 
-class WatchlistAdapter(private var coins: ArrayList<CoinApi>): RecyclerView.Adapter<CoinWatchlistViewHolder>() {
+class WatchlistAdapter(private var coins: List<CoinWithUpdate>): RecyclerView.Adapter<CoinWatchlistViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinWatchlistViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val listItemContactRootView =
@@ -28,19 +31,19 @@ class WatchlistAdapter(private var coins: ArrayList<CoinApi>): RecyclerView.Adap
 
     override fun onBindViewHolder(holder: CoinWatchlistViewHolder, position: Int) {
         val coin = coins[position]
-        holder.coinIdTextView.text = coin.id.toString()
-        holder.coinNameTextView.text = coin.name
-        holder.coinSymbolTextView.text = coin.symbol
-        holder.coinPricePurchasedTextView.text = "TEST"
-        holder.coinPriceActualTextView.text = coin.priceActual.toString()
-        holder.coinPriceChangedPercentTextView.text = "TEST"
-        /*
+        holder.coinIdTextView.text = coin.coin.id.toString()
+        holder.coinNameTextView.text = coin.coinWithUpdate.name
+        holder.coinSymbolTextView.text = coin.coinWithUpdate.symbol
+        holder.coinPricePurchasedTextView.text = coin.coin.pricePurchased.toString()
+        holder.coinPriceActualTextView.text = coin.coinWithUpdate.priceActual.toString()
+        holder.coinPriceChangedPercentTextView.text = coin.coin.priceChangedPercent.toString()
+
         holder.listItemContactRootView.setOnClickListener{
-            val navHostFragment = holder.listItemContactRootView.findNavController()
-            navHostFragment.navigate(MainFragmentDirections.actionOverviewFragmentToDetailFragment(contact.id))
+            Toast.makeText(holder.itemView.context, "Coin: ${coin.coin.id} ${coin.coinWithUpdate.name}", Toast.LENGTH_LONG).show()
+            //val navHostFragment = holder.listItemContactRootView.findNavController()
+            //navHostFragment.navigate(MainFragmentDirections.actionOverviewFragmentToDetailFragment(coin.coin.id))
         }
 
-         */
     }
 
     override fun getItemCount(): Int {

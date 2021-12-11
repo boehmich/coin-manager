@@ -7,8 +7,9 @@
         <entry key="app/src/main/res/layout/coin_fragment.xml" value="0.1515625" />
         <entry key="app/src/main/res/layout/coinlist_fragment.xml" value="0.1393110435663627" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.22146739130434784" />
+        <entry key="app/src/main/res/layout/list_item_coin_watchlist.xml" value="0.4121066852061564" />
         <entry key="app/src/main/res/layout/navigation_toolbar.xml" value="0.22146739130434784" />
-        <entry key="app/src/main/res/layout/watchlist_fragment.xml" value="0.1393110435663627" />
+        <entry key="app/src/main/res/layout/watchlist_fragment.xml" value="1.0" />
       </map>
     </option>
   </component>

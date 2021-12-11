@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
 import com.example.coinmanager.database.CoinManagerDatabase
+import com.example.coinmanager.web.createWebService
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         ).allowMainThreadQueries()
             .build()
 
-        repository = Repository(database)
+        repository = Repository(database, createWebService())
 
 
         toolbar = findViewById(R.id.toolbar)

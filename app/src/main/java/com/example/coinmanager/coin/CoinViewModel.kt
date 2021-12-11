@@ -1,13 +1,13 @@
 package com.example.coinmanager.coin
 
 import androidx.lifecycle.ViewModel
-import com.example.coinmanager.CoinApi
+import com.example.coinmanager.Coin
 import com.example.coinmanager.repository
 
 class CoinViewModel : ViewModel() {
 
-    fun save(coinApi: CoinApi) {
+    fun save(coin: Coin) {
 
-        repository.saveCoin(coinApi)
+        repository.saveCoin(coin)
     }
 }

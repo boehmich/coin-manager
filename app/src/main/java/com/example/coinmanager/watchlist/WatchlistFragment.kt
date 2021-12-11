@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.coinmanager.CoinWithUpdate
 import com.example.coinmanager.R
 import com.example.coinmanager.adapter.WatchlistAdapter
 import com.example.coinmanager.coin.CoinViewModel
@@ -27,25 +28,20 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
         swipeRefreshLayout.setOnRefreshListener {
             viewModel.createCoinsWatchlist()
         }
-/*
+
         viewModel.readCoinWatchlist().observe(viewLifecycleOwner){
             refreshCoinsInWatchlist(ArrayList(it))
             swipeRefreshLayout.isRefreshing = false
         }
 
-
     }
 
-    private fun refreshCoinsInWatchlist(coinsWatchlist: ArrayList<CoinsWatchlist>) {
+    private fun refreshCoinsInWatchlist(coinsWatchlist: ArrayList<CoinWithUpdate>) {
         val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         val adapter = WatchlistAdapter(coinsWatchlist)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
 
     }
-
- */
-    }
-
 
 }

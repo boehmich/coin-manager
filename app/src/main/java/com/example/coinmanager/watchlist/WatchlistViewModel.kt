@@ -5,14 +5,8 @@ import com.example.coinmanager.repository
 
 class WatchlistViewModel : ViewModel() {
 
-/*
-    fun createCoinsWatchlist() = repository.createCoinsWatchList()
+    fun createCoinsWatchlist() = repository.updateCoinsDAO()
 
-
-    fun readCoinWatchlist(): Any {
-        return Any
-    }
-
- */
+    fun readCoinWatchlist() = repository.coins
 
 }
