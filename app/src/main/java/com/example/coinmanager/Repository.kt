@@ -1,8 +1,10 @@
 package com.example.coinmanager
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.coinmanager.database.CoinManagerDatabase
 import com.example.coinmanager.web.CoinWebService
+import kotlinx.coroutines.awaitAll
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,37 +21,26 @@ class Repository(
 
     fun saveCoinApi(coinApi: CoinApi) = database.getCoinDao().createCoinApi(coinApi)
 
-    fun getCoinsFromWebservice() {
 
-        coinWebService.getAllCoins(1000,"EUR").enqueue(object : Callback<CoinWebEntity> {
+    fun getCoinsFromWebservice(onComplete: (ArrayList<CoinlistCoin>) -> Unit) {
+        coinWebService.getAllCoins(100,"EUR").enqueue(object : Callback<CoinWebEntity> {
             override fun onResponse(
                 call: Call<CoinWebEntity>,
                 response: Response<CoinWebEntity>
             ) {
                 val coins = response.body()?.data
-                if (coins != null) {
-                    for (coin in coins){
-                        Log.e("Coin ${coins.indexOf(coin)}", "${coin.id} ${coin.name} ${coin.slug} ${coin.quote?.EUR?.price}")
-                    }
+
+                val coinListCoins = coins?.map {
+                    CoinlistCoin(it.id, it.name, it.symbol, it.slug, it.quote?.EUR?.price, it.quote?.EUR?.percent_change_1h, it.quote?.EUR?.percent_change_24h, it.quote?.EUR?.percent_change_7d)
                 }
 
-                if (coins == null){
-                    Log.e("leider","leer")
+                if(coinListCoins != null){
+                    onComplete.invoke(coinListCoins as ArrayList<CoinlistCoin>)
                 }
-                /*
-                val databaseContacts = coins?.map {
-                    CoinApi(it.id, it.name, it.symbol, it.slug, it.p)
-                }
-                if(databaseContacts != null){
-                    database.getContactDao().create(databaseContacts)
-                }
-                 */
             }
-
             override fun onFailure(call: Call<CoinWebEntity>, t: Throwable) {
                 Log.e("HTTP", "Get all coins faild", t)
             }
-
         })
     }
 

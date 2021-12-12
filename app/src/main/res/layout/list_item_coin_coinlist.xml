@@ -9,7 +9,7 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/tvCoinApiId"
+        android:id="@+id/tvCoinlistId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ID"
@@ -18,35 +18,78 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayoutCoinlistItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/tvCoinApiId"
+        app:layout_constraintStart_toEndOf="@+id/tvCoinlistId"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvCoinApiName"
+            android:id="@+id/tvCoinlistName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name" />
 
         <TextView
-            android:id="@+id/tvCoinApiSymbol"
+            android:id="@+id/tvCoinlistSymbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Symbol" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayoutCoinlistItemPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvCoinlistPrice"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvCoinlistPercent1h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1h%" />
+
+        <TextView
+            android:id="@+id/tvCoinlistPercent24h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24%" />
+
+        <TextView
+            android:id="@+id/tvCoinlistPercent7d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7d%" />
+    </LinearLayout>
+
+
     <TextView
+        android:id="@+id/tvCoinlistPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preis"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--
+<TextView
         android:id="@+id/tvCoinApiPercent24h"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:layout_marginStart="70dp"
         android:text="24h%"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toEndOf="@+id/linearLayoutCoinlistItemName"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -58,15 +101,4 @@
         app:layout_constraintEnd_toStartOf="@+id/tvCoinApiPrice"
         app:layout_constraintStart_toEndOf="@+id/tvCoinApiPercent24h"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCoinApiPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Preis"
-        android:paddingTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+-->

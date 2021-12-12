@@ -38,20 +38,18 @@ class CoinWithUpdate(
     val coinWithUpdate: CoinApi
 ): Serializable
 
-/*
-@JsonIgnoreProperties(ignoreUnknown = true)
-data class CoinWebEntity(
-    @JsonProperty("id") var id: Int,
-    @JsonProperty("name") var name: String,
-    @JsonProperty("symbol") var symbol: String,
-    @JsonProperty("slug") var slug: String,
-    //@JsonProperty("price") var price: Double,
-    //@JsonProperty("percent_change_7d") var percent7d: Double,
-    //@JsonProperty("percent_change_24h") var percent24h: Double
+
+
+data class CoinlistCoin(
+    var id: Int,
+    var name: String,
+    var symbol: String,
+    var slug: String,
+    var price: Double?,
+    var percent1h: Double?,
+    var percent24h: Double?,
+    var percent7d: Double?
 )
-
- */
-
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
