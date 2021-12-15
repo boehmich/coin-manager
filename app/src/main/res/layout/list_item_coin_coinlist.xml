@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/tvCoinlistId"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:text="ID"
         android:paddingTop="8dp"
@@ -21,7 +21,7 @@
         android:id="@+id/linearLayoutCoinlistItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/tvCoinlistId"
         app:layout_constraintTop_toTopOf="parent">
@@ -44,38 +44,85 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toStartOf="@+id/tvCoinlistPrice"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="bottom|end">
 
-        <TextView
-            android:id="@+id/tvCoinlistPercent1h"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1h%" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvCoinlistPercent24h"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1h"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/tvCoinlistPercent1h"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1h%"
+                android:textAlignment="viewEnd"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="24%" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvCoinlistPercent7d"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24h"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/tvCoinlistPercent24h"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="24%"
+                android:textAlignment="viewEnd"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7d%" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7d"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/tvCoinlistPercent7d"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="7d%"
+                android:textAlignment="viewEnd"/>
+        </LinearLayout>
     </LinearLayout>
 
 
     <TextView
         android:id="@+id/tvCoinlistPrice"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Preis"
         android:paddingTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="viewEnd"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

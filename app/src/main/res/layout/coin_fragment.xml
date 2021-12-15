@@ -7,7 +7,7 @@
     tools:context=".coin.CoinFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutCoinFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -19,6 +19,7 @@
         android:layout_marginRight="20dp">
 
         <TextView
+            android:id="@+id/tvCoinFragmentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Coin"
@@ -27,13 +28,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
+            android:hint="Börse"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etCoinName"
+                android:id="@+id/etCoinFragmentExchange"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,10 +46,25 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPricePurchased"
+                android:id="@+id/etCoinFragmentPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone" />
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Datum"
+            android:layout_marginTop="10dp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCoinFragmentDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:focusable="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Save Coin"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintEnd_toEndOf="@+id/linearLayoutCoinFragment"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCoinFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

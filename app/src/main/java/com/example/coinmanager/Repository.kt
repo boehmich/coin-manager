@@ -1,10 +1,9 @@
 package com.example.coinmanager
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import com.example.coinmanager.database.CoinManagerDatabase
 import com.example.coinmanager.web.CoinWebService
-import kotlinx.coroutines.awaitAll
+import com.example.coinmanager.web.model.CoinUpdateWebEntity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,14 +12,7 @@ lateinit var repository: Repository
 
 class Repository(
     private val database: CoinManagerDatabase,
-    private val coinWebService: CoinWebService
-) {
-    val coins = database.getCoinDao().readAll()
-
-    fun saveCoin(coin: Coin) = database.getCoinDao().createCoin(coin)
-
-    fun saveCoinApi(coinApi: CoinApi) = database.getCoinDao().createCoinApi(coinApi)
-
+    private val coinWebService: CoinWebService) {
 
     fun getCoinsFromWebservice(onComplete: (ArrayList<CoinlistCoin>) -> Unit) {
         coinWebService.getAllCoins(100,"EUR").enqueue(object : Callback<CoinWebEntity> {
@@ -31,7 +23,7 @@ class Repository(
                 val coins = response.body()?.data
 
                 val coinListCoins = coins?.map {
-                    CoinlistCoin(it.id, it.name, it.symbol, it.slug, it.quote?.EUR?.price, it.quote?.EUR?.percent_change_1h, it.quote?.EUR?.percent_change_24h, it.quote?.EUR?.percent_change_7d)
+                    CoinlistCoin(it.id, it.name, it.symbol, it.slug, it.quote?.currency?.price, it.quote?.currency?.percent_change_1h, it.quote?.currency?.percent_change_24h, it.quote?.currency?.percent_change_7d)
                 }
 
                 if(coinListCoins != null){
@@ -44,12 +36,51 @@ class Repository(
         })
     }
 
-    fun updateCoinsDAO() {
-        /** ToDo
-         * get ApiIDs of coins from CoinUpdate
-         * generate QueryAdress
-         * update
-         */
+    val coins = database.getCoinDao().readAll()
 
+    fun saveCoin(coin: CoinWithUpdate){
+        var isInList = false
+
+        val coinApiIds = database.getCoinDao().readCoinApiIds()
+        coinApiIds.forEach {
+            if (it == coin.coinWithUpdate.id) isInList = true
+        }
+
+        if(!isInList) database.getCoinDao().createCoinApi(coin.coinWithUpdate)
+
+        database.getCoinDao().createCoin(coin.coin)
+    }
+
+    fun updateCoinsWatchlist() {
+        val ids = database.getCoinDao().readCoinApiIds()
+
+        var queryParams = ""
+        ids.forEach {
+            if(queryParams == "") queryParams += it else queryParams += ",${it}"
+        }
+
+        Log.e("ids", queryParams)
+
+        coinWebService.getCoinsForUpdate(queryParams,"EUR").enqueue(object : Callback<CoinUpdateWebEntity> {
+            override fun onResponse(
+                call: Call<CoinUpdateWebEntity>,
+                response: Response<CoinUpdateWebEntity>
+            ) {
+                val coins = response.body()
+
+                coins?.data?.forEach { (id, body) ->
+                    val price = body.quote.currency.price
+                    Log.e("$id", "$price")
+                    database.getCoinDao().updateCoinApiPrice(id,price)
+                }
+
+            }
+            override fun onFailure(call: Call<CoinUpdateWebEntity>, t: Throwable) {
+                Log.e("HTTP", "Get all coins faild", t)
+            }
+        })
     }
 }
+
+
+

@@ -2,9 +2,7 @@ package com.example.coinmanager.watchlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +10,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.coinmanager.CoinWithUpdate
 import com.example.coinmanager.R
 import com.example.coinmanager.adapter.WatchlistAdapter
-import com.example.coinmanager.coin.CoinViewModel
 
 class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
 
@@ -26,7 +23,7 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshWatchlist)
 
         swipeRefreshLayout.setOnRefreshListener {
-            viewModel.createCoinsWatchlist()
+            viewModel.updateCoinsWatchlist()
         }
 
         viewModel.readCoinWatchlist().observe(viewLifecycleOwner){

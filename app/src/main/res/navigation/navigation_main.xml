@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_coinFragment_to_watchlistFragment"
             app:destination="@id/watchlistFragment" />
+        <argument
+            android:name="coin"
+            app:argType="com.example.coinmanager.CoinlistCoin" />
     </fragment>
 
     <fragment

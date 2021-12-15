@@ -26,11 +26,14 @@ interface CoinDAO {
     @Update
     fun updateCoin(coin: Coin)
 
-    @Update
-    fun updateCoinApi(coinApi: CoinApi)
+    @Query("UPDATE CoinsApi SET priceActual = :price WHERE id = :id")
+    fun updateCoinApiPrice(id: Int, price: Double)
 
     @Delete
     fun delete(coin: Coin)
+
+    @Query("SELECT id FROM CoinsApi")
+    fun readCoinApiIds(): List<Int>
 
     @Query("DELETE FROM Coins")
     fun deleteTable()

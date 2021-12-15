@@ -3,7 +3,7 @@
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#673AB7</item>
         <item name="colorPrimaryDark">#512DA8</item>
-        <item name="colorAccent">#FF4081</item>
+        <item name="colorAccent">#009688</item>
     </style>
 
     <style name="Theme.CoinManager" parent="Theme.MaterialComponents.DayNight.DarkActionBar">

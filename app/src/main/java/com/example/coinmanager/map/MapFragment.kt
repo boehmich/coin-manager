@@ -9,8 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.coinmanager.R
+import com.example.coinmanager.repository
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
@@ -32,6 +34,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
+
+        var tvCoordinates: TextView = view.findViewById(R.id.textView3)
+        tvCoordinates.setOnClickListener {
+            repository.updateCoinsWatchlist()
+            Toast.makeText(requireContext(), "OK", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

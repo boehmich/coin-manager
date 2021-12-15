@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.coinmanager.Coin
 import com.example.coinmanager.CoinWithUpdate
 import com.example.coinmanager.R
+import com.example.coinmanager.coinlist.CoinlistFragmentDirections
 
 
 class CoinWatchlistViewHolder(val listItemContactRootView: View): RecyclerView.ViewHolder(listItemContactRootView) {
@@ -40,8 +41,6 @@ class WatchlistAdapter(private var coins: List<CoinWithUpdate>): RecyclerView.Ad
 
         holder.listItemContactRootView.setOnClickListener{
             Toast.makeText(holder.itemView.context, "Coin: ${coin.coin.id} ${coin.coinWithUpdate.name}", Toast.LENGTH_LONG).show()
-            //val navHostFragment = holder.listItemContactRootView.findNavController()
-            //navHostFragment.navigate(MainFragmentDirections.actionOverviewFragmentToDetailFragment(coin.coin.id))
         }
 
     }

@@ -2,6 +2,7 @@ package com.example.coinmanager.web
 
 
 import com.example.coinmanager.CoinWebEntity
+import com.example.coinmanager.web.model.CoinUpdateWebEntity
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -17,17 +18,13 @@ import java.util.concurrent.TimeUnit
 
 interface CoinWebService{
 
-
-/** Query Params
-    ?convert=EUR
-    fun getAllCoins(@Query("limit") limit: Int?,
-                    @Query("convert") fiat: String?): Call<CoinWebEntity>
-?limit=50&convert=EUR
-
- **/
     @GET("cryptocurrency/listings/latest")
     fun getAllCoins(@Query("limit") limit: Int?,
                     @Query("convert") fiat: String?): Call<CoinWebEntity>
+
+    @GET("cryptocurrency/quotes/latest")
+    fun getCoinsForUpdate(@Query("id") id: String?,
+                          @Query("convert") fiat: String?): Call<CoinUpdateWebEntity>
 
 }
 
