@@ -31,7 +31,7 @@ class Repository(
                 }
             }
             override fun onFailure(call: Call<CoinWebEntity>, t: Throwable) {
-                Log.e("HTTP", "Get all coins faild", t)
+                Log.e("HTTP", "Get all coins faild!", t)
             }
         })
     }
@@ -58,7 +58,6 @@ class Repository(
         ids.forEach {
             if(queryParams == "") queryParams += it else queryParams += ",${it}"
         }
-
         Log.e("ids", queryParams)
 
         coinWebService.getCoinsForUpdate(queryParams,"EUR").enqueue(object : Callback<CoinUpdateWebEntity> {
@@ -76,7 +75,7 @@ class Repository(
 
             }
             override fun onFailure(call: Call<CoinUpdateWebEntity>, t: Throwable) {
-                Log.e("HTTP", "Get all coins faild", t)
+                Log.e("HTTP", "Get coins for update faild", t)
             }
         })
     }
