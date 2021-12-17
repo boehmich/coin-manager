@@ -25,7 +25,7 @@
             app:destination="@id/watchlistFragment" />
         <argument
             android:name="coin"
-            app:argType="com.example.coinmanager.CoinlistCoin" />
+            app:argType="com.example.coinmanager.models.CoinlistCoin" />
     </fragment>
 
     <fragment

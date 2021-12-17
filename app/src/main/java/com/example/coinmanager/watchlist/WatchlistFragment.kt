@@ -26,12 +26,18 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
             viewModel.updateCoinsWatchlist()
         }
 
-        viewModel.readCoinWatchlist().observe(viewLifecycleOwner){
+        viewModel.readCoinWatchlist().observe(viewLifecycleOwner, {
+            it.forEach {
+                var percent = (it.coinWithUpdate.priceActual / it.coin.pricePurchased - 1) * 100
+                it.coin.priceChangedPercent = Math.round(percent * 100.0) / 100.0
+                it.coin.pricePurchased = Math.round(it.coin.pricePurchased * 100.0) / 100.0
+                it.coinWithUpdate.priceActual = Math.round(it.coinWithUpdate.priceActual * 100.0) / 100.0
+            }
             refreshCoinsInWatchlist(ArrayList(it))
             swipeRefreshLayout.isRefreshing = false
-        }
-
+        })
     }
+
 
     private fun refreshCoinsInWatchlist(coinsWatchlist: ArrayList<CoinWithUpdate>) {
         val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)

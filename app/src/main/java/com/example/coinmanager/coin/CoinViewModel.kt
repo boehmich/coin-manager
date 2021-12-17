@@ -3,6 +3,7 @@ package com.example.coinmanager.coin
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.coinmanager.*
+import com.example.coinmanager.models.CoinlistCoin
 
 class CoinViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
     val selectedCoin = savedStateHandle.get<CoinlistCoin>("coin")!!

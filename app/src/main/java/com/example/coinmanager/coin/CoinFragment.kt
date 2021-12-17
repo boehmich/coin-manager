@@ -40,11 +40,8 @@ class CoinFragment : Fragment(R.layout.coin_fragment) {
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minutes = calendar.get(Calendar.MINUTE)
 
-        val currentDate = "${day}.${month + 1}.${year} ${hour}:${minutes}"
+        val currentDate = String.format("%02d.%02d.%04d %02d:%02d", day, month + 1, year, hour, minutes)
         etDate.setText(currentDate)
-
-        Log.e("Date", currentDate)
-
 
         etDate.setOnClickListener {
             var time = ""

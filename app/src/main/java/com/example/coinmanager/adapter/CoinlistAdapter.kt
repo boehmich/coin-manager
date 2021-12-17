@@ -4,14 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coinmanager.CoinWithUpdate
-import com.example.coinmanager.CoinlistCoin
 import com.example.coinmanager.R
 import com.example.coinmanager.coinlist.CoinlistFragmentDirections
+import com.example.coinmanager.models.CoinlistCoin
 
 
 class CoinCoinlistViewHolder(val listItemContactRootView: View): RecyclerView.ViewHolder(listItemContactRootView) {
@@ -40,34 +38,30 @@ class CoinlistAdapter(private var coins: List<CoinlistCoin>): RecyclerView.Adapt
         holder.coinPercent1hTextView.text = coin.percent1h.toString() + "%"
         holder.coinPercent24hTextView.text = coin.percent24h.toString() + "%"
         holder.coinPercent7dTextView.text = coin.percent7d.toString()+ "%"
-        holder.coinPriceTextView.text = coin.price.toString()+ "€"
+        holder.coinPriceTextView.text = coin.price.toString() + "€"
 
+        val percent1hTextColor = getResourceColor(coin.percent1h!!)
+        val percent24hTextColor = getResourceColor(coin.percent24h!!)
+        val percent7dTextColor = getResourceColor(coin.percent7d!!)
 
-        if(coin.percent1h!! < 0){
-            holder.coinPercent1hTextView.setTextColor(ContextCompat.getColor(holder.coinPercent1hTextView.context, R.color.negative))
-        }
-        else{
-            holder.coinPercent1hTextView.setTextColor(ContextCompat.getColor(holder.coinPercent1hTextView.context, R.color.positive))
-        }
+        holder.coinPercent1hTextView.setTextColor(ContextCompat.getColor(holder.coinPercent1hTextView.context, percent1hTextColor))
+        holder.coinPercent24hTextView.setTextColor(ContextCompat.getColor(holder.coinPercent24hTextView.context, percent24hTextColor))
+        holder.coinPercent7dTextView.setTextColor(ContextCompat.getColor(holder.coinPercent7dTextView.context, percent7dTextColor))
 
-        if(coin.percent24h!! < 0){
-            holder.coinPercent24hTextView.setTextColor(ContextCompat.getColor(holder.coinPercent1hTextView.context, R.color.negative))
-        }
-        else{
-            holder.coinPercent24hTextView.setTextColor(ContextCompat.getColor(holder.coinPercent1hTextView.context, R.color.positive))
-        }
-
-        if(coin.percent7d!! < 0){
-            holder.coinPercent7dTextView.setTextColor(ContextCompat.getColor(holder.coinPercent1hTextView.context, R.color.negative))
-        }
-        else{
-            holder.coinPercent7dTextView.setTextColor(ContextCompat.getColor(holder.coinPercent1hTextView.context, R.color.positive))
-        }
 
         holder.listItemContactRootView.setOnClickListener{
             val navHostFragment = holder.listItemContactRootView.findNavController()
             navHostFragment.navigate(CoinlistFragmentDirections.actionCoinlistFragmentToCoinFragment(coin))
         }
+    }
+
+    private fun getResourceColor(number: Double): Int {
+        var stringResourceColor: Int = R.color.black
+
+        if(number < 0) stringResourceColor = R.color.negative
+        if(number > 0) stringResourceColor = R.color.positive
+
+        return stringResourceColor
     }
 
     override fun getItemCount(): Int {

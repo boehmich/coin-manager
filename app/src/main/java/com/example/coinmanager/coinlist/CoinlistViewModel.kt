@@ -1,9 +1,11 @@
 package com.example.coinmanager.coinlist
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.coinmanager.*
+import com.example.coinmanager.models.CoinlistCoin
 
 class CoinlistViewModel : ViewModel() {
 
@@ -11,7 +13,7 @@ class CoinlistViewModel : ViewModel() {
     val coinlist: LiveData<ArrayList<CoinlistCoin>> get() = coinlistLiveData
 
 
-    fun createCoinsCoinlist() = repository.getCoinsFromWebservice{ list ->
+    fun updateCoinsCoinlist() = repository.getCoinsFromWebservice{ list ->
         /*
         for (coin in list){
             Log.e("CoinId ${coin.id}", "${coin.name}, ${coin.slug}, ${coin.percent1h}, ${coin.price}")
@@ -31,6 +33,7 @@ class CoinlistViewModel : ViewModel() {
 
         coinlistLiveData.postValue(coinlist)
     }
+
 }
 
 

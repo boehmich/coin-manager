@@ -35,9 +35,9 @@ class WatchlistAdapter(private var coins: List<CoinWithUpdate>): RecyclerView.Ad
         holder.coinIdTextView.text = coin.coin.id.toString()
         holder.coinNameTextView.text = coin.coinWithUpdate.name
         holder.coinSymbolTextView.text = coin.coinWithUpdate.symbol
-        holder.coinPricePurchasedTextView.text = coin.coin.pricePurchased.toString()
-        holder.coinPriceActualTextView.text = coin.coinWithUpdate.priceActual.toString()
-        holder.coinPriceChangedPercentTextView.text = coin.coin.priceChangedPercent.toString()
+        holder.coinPricePurchasedTextView.text = coin.coin.pricePurchased.toString() + "€"
+        holder.coinPriceActualTextView.text = coin.coinWithUpdate.priceActual.toString() + "€"
+        holder.coinPriceChangedPercentTextView.text = coin.coin.priceChangedPercent.toString() + "%"
 
         holder.listItemContactRootView.setOnClickListener{
             Toast.makeText(holder.itemView.context, "Coin: ${coin.coin.id} ${coin.coinWithUpdate.name}", Toast.LENGTH_LONG).show()

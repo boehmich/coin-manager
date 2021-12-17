@@ -6,13 +6,13 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
     android:orientation="horizontal"
-    android:padding="20dp">
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/tvCoinId"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="ID"
+        android:text="Börse"
         android:paddingTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +21,7 @@
         android:id="@+id/linearLayoutWatchlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/tvCoinId"
         app:layout_constraintTop_toTopOf="parent">
@@ -39,33 +39,71 @@
             android:text="Symbol" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvCoinPricePurchased"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:layout_marginStart="30dp"
-        android:text="Kaufpreis"
-        app:layout_constraintStart_toEndOf="@+id/linearLayoutWatchlist"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="bottom|end"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/tvCoinPercentChange"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="3dp">
 
-    <TextView
-        android:id="@+id/tvCoinPriceActual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:layout_marginStart="15dp"
-        android:text="Aktueller Preis"
-        app:layout_constraintStart_toEndOf="@+id/tvCoinPricePurchased"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01.01.2021"
+                android:textAlignment="viewEnd" />
+
+            <TextView
+                android:id="@+id/tvCoinPricePurchased"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Kaufpreis"
+                android:textAlignment="viewEnd"
+                app:layout_constraintStart_toEndOf="@+id/linearLayoutWatchlist"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="aktuell"
+                android:textAlignment="viewEnd" />
+
+            <TextView
+                android:id="@+id/tvCoinPriceActual"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Aktueller Preis"
+                android:textAlignment="viewEnd"
+                app:layout_constraintStart_toEndOf="@+id/linearLayoutWatchlist"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tvCoinPercentChange"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:text="Preisänderung"
+        android:text="100.00%"
         android:paddingTop="8dp"
+        android:textAlignment="viewEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

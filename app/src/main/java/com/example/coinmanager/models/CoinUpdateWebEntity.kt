@@ -1,4 +1,4 @@
-package com.example.coinmanager.web.model
+package com.example.coinmanager.models
 
 
 import com.fasterxml.jackson.annotation.JsonAlias

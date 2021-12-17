@@ -1,19 +1,15 @@
 package com.example.coinmanager.web
 
 
-import com.example.coinmanager.CoinWebEntity
-import com.example.coinmanager.web.model.CoinUpdateWebEntity
+import com.example.coinmanager.models.CoinUpdateWebEntity
+import com.example.coinmanager.models.CoinWebEntity
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Query
-import java.io.IOException
-import java.util.concurrent.TimeUnit
 
 
 interface CoinWebService{

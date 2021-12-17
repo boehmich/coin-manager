@@ -3,7 +3,9 @@ package com.example.coinmanager
 import android.util.Log
 import com.example.coinmanager.database.CoinManagerDatabase
 import com.example.coinmanager.web.CoinWebService
-import com.example.coinmanager.web.model.CoinUpdateWebEntity
+import com.example.coinmanager.models.CoinUpdateWebEntity
+import com.example.coinmanager.models.CoinWebEntity
+import com.example.coinmanager.models.CoinlistCoin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,6 +16,7 @@ class Repository(
     private val database: CoinManagerDatabase,
     private val coinWebService: CoinWebService) {
 
+
     fun getCoinsFromWebservice(onComplete: (ArrayList<CoinlistCoin>) -> Unit) {
         coinWebService.getAllCoins(100,"EUR").enqueue(object : Callback<CoinWebEntity> {
             override fun onResponse(
@@ -23,7 +26,9 @@ class Repository(
                 val coins = response.body()?.data
 
                 val coinListCoins = coins?.map {
-                    CoinlistCoin(it.id, it.name, it.symbol, it.slug, it.quote?.currency?.price, it.quote?.currency?.percent_change_1h, it.quote?.currency?.percent_change_24h, it.quote?.currency?.percent_change_7d)
+                    CoinlistCoin(it.id, it.name, it.symbol, it.slug, it.quote?.currency?.price,
+                        it.quote?.currency?.percent_change_1h, it.quote?.currency?.percent_change_24h,
+                        it.quote?.currency?.percent_change_7d)
                 }
 
                 if(coinListCoins != null){
@@ -80,6 +85,33 @@ class Repository(
         })
     }
 }
+
+/*
+var coinlistList = MutableLiveData(ArrayList<CoinlistCoin>())
+
+fun getCoinsFromWebservice() {
+    coinWebService.getAllCoins(100,"EUR").enqueue(object : Callback<CoinWebEntity> {
+        override fun onResponse(
+            call: Call<CoinWebEntity>,
+            response: Response<CoinWebEntity>
+        ) {
+            val coins = response.body()?.data
+
+            val coinListCoins = coins?.map {
+                CoinlistCoin(it.id, it.name, it.symbol, it.slug, it.quote?.currency?.price, it.quote?.currency?.percent_change_1h, it.quote?.currency?.percent_change_24h, it.quote?.currency?.percent_change_7d)
+            }
+
+            if(coinListCoins != null){
+                repository.coinlistList = coinListCoins as MutableLiveData<ArrayList<CoinlistCoin>>
+            }
+        }
+        override fun onFailure(call: Call<CoinWebEntity>, t: Throwable) {
+            Log.e("HTTP", "Get all coins faild!", t)
+        }
+    })
+}
+
+ */
 
 
 
