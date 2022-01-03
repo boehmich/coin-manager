@@ -45,10 +45,3 @@ fun createWebService(): CoinWebService{
 
     return retrofit.create(CoinWebService::class.java)
 }
-
-/*
-    val httpClient = OkHttpClient.Builder()
-        .readTimeout(10, TimeUnit.SECONDS)
-        .connectTimeout(10, TimeUnit.SECONDS)
-       .build()
- */

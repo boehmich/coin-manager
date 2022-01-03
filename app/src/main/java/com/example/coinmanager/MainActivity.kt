@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.coinlistFragment, R.id.watchlistFragment , R.id.mapsFragment, R.id.coinFragment -> {
+                R.id.coinlistFragment, R.id.watchlistFragment , R.id.mapsFragment, R.id.coinFragment, R.id.coinEditFragment -> {
                     toolbar?.visibility = View.VISIBLE
                     drawerLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                     actionBarDrawerToggle.syncState()

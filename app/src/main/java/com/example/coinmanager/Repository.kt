@@ -1,7 +1,6 @@
 package com.example.coinmanager
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import com.example.coinmanager.database.CoinManagerDatabase
 import com.example.coinmanager.web.CoinWebService
 import com.example.coinmanager.models.CoinUpdateWebEntity
@@ -85,6 +84,8 @@ class Repository(
     }
 
     fun deleteCoin(coin: Coin) = database.getCoinDao().delete(coin)
+
+    fun updateCoin(coin: Coin) = database.getCoinDao().updateCoin(coin)
 
 }
 

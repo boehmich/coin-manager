@@ -15,7 +15,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import android.content.Context
 import android.view.ContextThemeWrapper
 import androidx.navigation.fragment.findNavController
-import com.example.coinmanager.coin.CoinFragmentDirections
 import com.example.coinmanager.repository
 
 
@@ -33,14 +32,7 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
         swipeRefreshLayout.setOnRefreshListener {
             viewModel.updateCoinsWatchlist()
         }
-
-        viewModel.readCoinWatchlist().observe(viewLifecycleOwner, {
-            it.forEach {
-                var percent = (it.coinWithUpdate.priceActual / it.coin.pricePurchased - 1) * 100
-                it.coin.priceChangedPercent = Math.round(percent * 100.0) / 100.0
-                it.coin.pricePurchased = Math.round(it.coin.pricePurchased * 100.0) / 100.0
-                it.coinWithUpdate.priceActual = Math.round(it.coinWithUpdate.priceActual * 100.0) / 100.0
-            }
+        viewModel.readCoinsWatchlist.observe(viewLifecycleOwner, {
             refreshCoinsInWatchlist(ArrayList(it))
             swipeRefreshLayout.isRefreshing = false
         })
@@ -50,13 +42,13 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
     private fun refreshCoinsInWatchlist(coinsWatchlist: ArrayList<CoinWithUpdate>) {
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        val adapter = WatchlistAdapter(coinsWatchlist, onClickListener = this::openActivity)
+        val adapter = WatchlistAdapter(coinsWatchlist, onClickListener = this::handleClickListener)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
 
     }
 
-    private fun openActivity(view: View, coin: CoinWithUpdate) {
+    private fun handleClickListener(view: View, coin: CoinWithUpdate) {
         val materialAlertContext: Context = ContextThemeWrapper(requireContext(), R.style.Theme_CoinManager)
         val options = arrayOf("Bearbeiten", "Löschen")
         MaterialAlertDialogBuilder(materialAlertContext)
@@ -64,7 +56,7 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
             .setItems(options) { _, selectedItem ->
                 if(selectedItem == 0){
                     val navHostFragment = findNavController()
-                    navHostFragment.navigate(CoinFragmentDirections.actionCoinFragmentToWatchlistFragment())
+                    navHostFragment.navigate(WatchlistFragmentDirections.actionWatchlistFragmentToCoinEditFragment(coin))
                 }
                 if(selectedItem == 1){
                     deleteCoin(coin, materialAlertContext)
@@ -85,8 +77,21 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
             .setNegativeButton("Abbruch") { _, _ ->
                 Toast.makeText(context, "Der Coin ist weiterhin in der Watchlist", Toast.LENGTH_LONG).show()
             }
-            .setCancelable(false) // user must select an item or one of the buttons .create()
+            .setCancelable(false)
             .show()
     }
-
 }
+
+/*
+       viewModel.readCoinWatchlist().observe(viewLifecycleOwner, {
+           it.forEach {
+               var percent = (it.coinWithUpdate.priceActual / it.coin.pricePurchased - 1) * 100
+               it.coin.priceChangedPercent = Math.round(percent * 100.0) / 100.0
+               it.coin.pricePurchased = Math.round(it.coin.pricePurchased * 100.0) / 100.0
+               it.coinWithUpdate.priceActual = Math.round(it.coinWithUpdate.priceActual * 100.0) / 100.0
+           }
+           refreshCoinsInWatchlist(ArrayList(it))
+           swipeRefreshLayout.isRefreshing = false
+       })
+
+        */

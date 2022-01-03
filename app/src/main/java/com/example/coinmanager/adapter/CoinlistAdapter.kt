@@ -22,6 +22,7 @@ class CoinCoinlistViewHolder(val listItemContactRootView: View): RecyclerView.Vi
     val coinPercent7dTextView: TextView = listItemContactRootView.findViewById(R.id.tvCoinlistPercent7d)
 }
 
+
 class CoinlistAdapter(private var coins: List<CoinlistCoin>): RecyclerView.Adapter<CoinCoinlistViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinCoinlistViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

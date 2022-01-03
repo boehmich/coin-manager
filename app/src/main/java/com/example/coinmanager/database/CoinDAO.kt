@@ -9,15 +9,18 @@ import com.example.coinmanager.CoinWithUpdate
 @Dao
 interface CoinDAO {
 
-    @Transaction
-    @Query("SELECT * FROM Coins ORDER BY id")
-    fun readAll(): LiveData<List<CoinWithUpdate>>
-
     @Insert
     fun createCoin(coin: Coin)
 
     @Insert
     fun createCoinApi(coinApi: CoinApi)
+
+    @Transaction
+    @Query("SELECT * FROM Coins ORDER BY id")
+    fun readAll(): LiveData<List<CoinWithUpdate>>
+
+    @Query("SELECT id FROM CoinsApi")
+    fun readCoinApiIds(): List<Int>
 
     @Transaction
     @Query("SELECT * FROM Coins WHERE id = :id")
@@ -31,9 +34,6 @@ interface CoinDAO {
 
     @Delete
     fun delete(coin: Coin)
-
-    @Query("SELECT id FROM CoinsApi")
-    fun readCoinApiIds(): List<Int>
 
     @Query("DELETE FROM Coins")
     fun deleteTable()

@@ -3,7 +3,6 @@ package com.example.coinmanager.coin
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
@@ -13,23 +12,12 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.coinmanager.R
-import com.example.coinmanager.models.CoinlistCoin
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 class CoinFragment : Fragment(R.layout.coin_fragment) {
 
     private val viewModel: CoinViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if(viewModel.selectedCoin is CoinlistCoin){
-            Toast.makeText(requireContext(), "ist kein Typ CoinlistCoin", Toast.LENGTH_SHORT).show()
-        }
-        else{
-            Toast.makeText(requireContext(), "ist ein Typ CoinlistCoin", Toast.LENGTH_SHORT).show()
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -93,3 +81,15 @@ class CoinFragment : Fragment(R.layout.coin_fragment) {
     }
 
 }
+
+/*
+override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if(viewModel.selectedCoin is CoinlistCoin){
+            Toast.makeText(requireContext(), "Typ CoinlistCoin", Toast.LENGTH_SHORT).show()
+        }
+        if(viewModel.selectedCoin is CoinWithUpdate){
+            Toast.makeText(requireContext(), "Typ CoinWithUpdate", Toast.LENGTH_SHORT).show()
+        }
+    }
+ */
