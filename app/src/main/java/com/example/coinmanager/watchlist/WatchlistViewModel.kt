@@ -7,9 +7,6 @@ class WatchlistViewModel : ViewModel() {
 
     fun updateCoinsWatchlist() = repository.updateCoinsWatchlist()
 
-
     fun readCoinWatchlist() = repository.coins
-
-
 
 }

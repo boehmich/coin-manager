@@ -4,7 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13247213779128672" />
-        <entry key="app/src/main/res/layout/coin_fragment.xml" value="0.1515625" />
+        <entry key="app/src/main/res/layout/coin_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/coinlist_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.22146739130434784" />
         <entry key="app/src/main/res/layout/list_item_coin_coinlist.xml" value="0.5" />

@@ -9,15 +9,27 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.coinmanager.R
+import com.example.coinmanager.models.CoinlistCoin
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 class CoinFragment : Fragment(R.layout.coin_fragment) {
 
     private val viewModel: CoinViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if(viewModel.selectedCoin is CoinlistCoin){
+            Toast.makeText(requireContext(), "ist kein Typ CoinlistCoin", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(requireContext(), "ist ein Typ CoinlistCoin", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,8 +39,19 @@ class CoinFragment : Fragment(R.layout.coin_fragment) {
         val tvCoinName: TextView = view.findViewById(R.id.tvCoinFragmentName)
         tvCoinName.setText(coin.name)
 
+        val etExchange: TextInputEditText = view.findViewById(R.id.etCoinFragmentExchange)
+
         val etPrice: TextInputEditText = view.findViewById(R.id.etCoinFragmentPrice)
         etPrice.setText(coin.price.toString())
+
+        etPrice.doAfterTextChanged { newPrice ->
+            if(newPrice.toString().isNotBlank()){
+                viewModel.coinPriceChanged(newPrice.toString().toDouble())
+            }
+            else{
+                viewModel.coinPriceChanged(0.0)
+            }
+        }
 
         val etDate: TextView = view.findViewById(R.id.etCoinFragmentDate)
         //val currentDate: String = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).format(Date())
@@ -58,11 +81,12 @@ class CoinFragment : Fragment(R.layout.coin_fragment) {
                 .show()
         }
 
+
         val button = view.findViewById<Button>(R.id.buttonSaveCoin)
 
         button.setOnClickListener{
-            Toast.makeText(requireContext(), "${coin.id}: ${tvCoinName.text}, ${etPrice.text}", Toast.LENGTH_SHORT).show()
-            viewModel.save()
+            Toast.makeText(requireContext(), "${coin.id}: ${etExchange.text}, ${etDate.text}", Toast.LENGTH_SHORT).show()
+            viewModel.save(etExchange.text.toString(), etDate.text.toString())
             val navHostFragment = findNavController()
             navHostFragment.navigate(CoinFragmentDirections.actionCoinFragmentToWatchlistFragment())
         }

@@ -4,7 +4,6 @@ package com.example.coinmanager
 import androidx.room.*
 import java.io.Serializable
 
-
 @Entity(tableName = "Coins",
     foreignKeys = [ForeignKey(
         entity = CoinApi::class,
@@ -14,6 +13,8 @@ import java.io.Serializable
     )])
 class Coin(
     var apiId: Int,
+    var exchange: String,
+    var datePurchased: String,
     var pricePurchased: Double = 0.0,
     var priceChangedPercent: Double = 0.0,
     @PrimaryKey(autoGenerate = true) var id: Int = 0

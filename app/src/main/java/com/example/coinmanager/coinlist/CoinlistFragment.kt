@@ -23,7 +23,6 @@ class CoinlistFragment : Fragment(R.layout.coinlist_fragment) {
         recyclerView = view.findViewById(R.id.recyclerViewCoinlist)
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshCoinlist)
 
-
         swipeRefreshLayout.setOnRefreshListener {
             viewModel.updateCoinsCoinlist()
         }
@@ -40,6 +39,5 @@ class CoinlistFragment : Fragment(R.layout.coinlist_fragment) {
         val adapter = CoinlistAdapter(coinsCoinlist)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
-
     }
 }

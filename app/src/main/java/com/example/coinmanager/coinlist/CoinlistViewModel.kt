@@ -22,6 +22,7 @@ class CoinlistViewModel : ViewModel() {
         processData(list)
     }
 
+
     private fun processData(coinlist: ArrayList<CoinlistCoin>) {
 
         coinlist.forEach{
@@ -35,10 +36,3 @@ class CoinlistViewModel : ViewModel() {
     }
 
 }
-
-
-/**
-    private fun roundDouble(decimalPlaces: Int): Double {
-    return "%.${decimalPlaces}f".format(this).toDouble()
-    }
- */

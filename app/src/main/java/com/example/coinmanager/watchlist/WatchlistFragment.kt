@@ -3,6 +3,7 @@ package com.example.coinmanager.watchlist
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.coinmanager.CoinWithUpdate
 import com.example.coinmanager.R
 import com.example.coinmanager.adapter.WatchlistAdapter
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import android.content.Context
+import android.view.ContextThemeWrapper
+import androidx.navigation.fragment.findNavController
+import com.example.coinmanager.coin.CoinFragmentDirections
+import com.example.coinmanager.repository
+
 
 class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
 
@@ -40,11 +48,45 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
 
 
     private fun refreshCoinsInWatchlist(coinsWatchlist: ArrayList<CoinWithUpdate>) {
-        val linearLayoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        val adapter = WatchlistAdapter(coinsWatchlist)
+        val linearLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        val adapter = WatchlistAdapter(coinsWatchlist, onClickListener = this::openActivity)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
 
+    }
+
+    private fun openActivity(view: View, coin: CoinWithUpdate) {
+        val materialAlertContext: Context = ContextThemeWrapper(requireContext(), R.style.Theme_CoinManager)
+        val options = arrayOf("Bearbeiten", "Löschen")
+        MaterialAlertDialogBuilder(materialAlertContext)
+            .setTitle("Wähle eine Aktion für ${coin.coinWithUpdate.name} aus:")
+            .setItems(options) { _, selectedItem ->
+                if(selectedItem == 0){
+                    val navHostFragment = findNavController()
+                    navHostFragment.navigate(CoinFragmentDirections.actionCoinFragmentToWatchlistFragment())
+                }
+                if(selectedItem == 1){
+                    deleteCoin(coin, materialAlertContext)
+                }
+            }
+            .setCancelable(true)
+            .show()
+    }
+
+    private fun deleteCoin(coin: CoinWithUpdate, context: Context) {
+        MaterialAlertDialogBuilder(context)
+            .setTitle(coin.coinWithUpdate.name)
+            .setMessage("Wollen Sie den Coin wirklich löschen?")
+            .setPositiveButton("Löschen") { _, _ ->
+                repository.deleteCoin(coin.coin)
+                Toast.makeText(context, "Der Coin wurde erfolgreich aus der Watchlist gelöscht.", Toast.LENGTH_LONG).show()
+            }
+            .setNegativeButton("Abbruch") { _, _ ->
+                Toast.makeText(context, "Der Coin ist weiterhin in der Watchlist", Toast.LENGTH_LONG).show()
+            }
+            .setCancelable(false) // user must select an item or one of the buttons .create()
+            .show()
     }
 
 }
