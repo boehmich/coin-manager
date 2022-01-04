@@ -36,10 +36,10 @@ class CoinlistAdapter(private var coins: List<CoinlistCoin>): RecyclerView.Adapt
         holder.coinIdTextView.text = coin.id.toString()
         holder.coinNameTextView.text = coin.name
         holder.coinSymbolTextView.text = coin.symbol
-        holder.coinPercent1hTextView.text = coin.percent1h.toString() + "%"
-        holder.coinPercent24hTextView.text = coin.percent24h.toString() + "%"
-        holder.coinPercent7dTextView.text = coin.percent7d.toString()+ "%"
-        holder.coinPriceTextView.text = coin.price.toString() + "€"
+        holder.coinPercent1hTextView.text = String.format("%.2f%%", coin.percent1h)
+        holder.coinPercent24hTextView.text = String.format("%.2f%%",coin.percent24h)
+        holder.coinPercent7dTextView.text = String.format("%.2f%%",coin.percent7d)
+        holder.coinPriceTextView.text = String.format("%.5f€",coin.price)
 
         val percent1hTextColor = getResourceColor(coin.percent1h!!)
         val percent24hTextColor = getResourceColor(coin.percent24h!!)

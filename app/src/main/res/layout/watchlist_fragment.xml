@@ -10,36 +10,3 @@
         android:id="@+id/recyclerViewWatchlist"/>
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
-<!--
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".watchlist.WatchlistFragment">
-
-    <TextView
-        android:id="@+id/tvWatchlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Watchlist"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <Button
-        android:id="@+id/buttonWatchlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="schow Watchlist"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWatchlist" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
--->

@@ -28,6 +28,11 @@ class CoinFragment : Fragment(R.layout.coin_fragment) {
         tvCoinName.setText(coin.name)
 
         val etExchange: TextInputEditText = view.findViewById(R.id.etCoinFragmentExchange)
+        etExchange.doAfterTextChanged { newExchange ->
+            if(newExchange.toString().isBlank()){
+                Toast.makeText(requireContext(), getString(R.string.enter_exchange), Toast.LENGTH_SHORT).show()
+            }
+        }
 
         val etPrice: TextInputEditText = view.findViewById(R.id.etCoinFragmentPrice)
         etPrice.setText(coin.price.toString())
@@ -38,11 +43,11 @@ class CoinFragment : Fragment(R.layout.coin_fragment) {
             }
             else{
                 viewModel.coinPriceChanged(0.0)
+                Toast.makeText(requireContext(), getString(R.string.enter_price), Toast.LENGTH_SHORT).show()
             }
         }
 
         val etDate: TextView = view.findViewById(R.id.etCoinFragmentDate)
-        //val currentDate: String = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).format(Date())
 
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -59,21 +64,19 @@ class CoinFragment : Fragment(R.layout.coin_fragment) {
 
             DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
                 val date = String.format("%02d.%02d.%04d", mDay, mMonth + 1, mYear)
-                etDate.setText("${date} ${time}")
+                etDate.setText(String.format("%1s %2s", date, time))
             }, year, month, day)
                 .show()
 
-           TimePickerDialog(requireContext(), TimePickerDialog.OnTimeSetListener { view, mHour, mMinutes ->
+           TimePickerDialog(requireContext(), { view, mHour, mMinutes ->
                 time = String.format("%02d:%02d", mHour, mMinutes)
             }, hour, minutes, true )
                 .show()
         }
 
-
         val button = view.findViewById<Button>(R.id.buttonSaveCoin)
-
+        button.setText(R.string.add_to_watchlist)
         button.setOnClickListener{
-            Toast.makeText(requireContext(), "${coin.id}: ${etExchange.text}, ${etDate.text}", Toast.LENGTH_SHORT).show()
             viewModel.save(etExchange.text.toString(), etDate.text.toString())
             val navHostFragment = findNavController()
             navHostFragment.navigate(CoinFragmentDirections.actionCoinFragmentToWatchlistFragment())
@@ -93,3 +96,5 @@ override fun onCreate(savedInstanceState: Bundle?) {
         }
     }
  */
+
+//val currentDate: String = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault()).format(Date())

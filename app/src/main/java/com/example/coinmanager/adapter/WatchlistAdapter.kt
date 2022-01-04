@@ -1,18 +1,15 @@
 package com.example.coinmanager.adapter
 
 
-import android.content.Context
-import android.view.ContextThemeWrapper
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coinmanager.CoinWithUpdate
 import com.example.coinmanager.R
-import com.example.coinmanager.repository
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class CoinWatchlistViewHolder(val listItemContactRootView: View): RecyclerView.ViewHolder(listItemContactRootView) {
@@ -41,9 +38,12 @@ class WatchlistAdapter(private var coins: List<CoinWithUpdate>,
         holder.coinNameTextView.text = coin.coinWithUpdate.name
         holder.coinSymbolTextView.text = coin.coinWithUpdate.symbol
         holder.coinsDatePurchasedTextView.text = coin.coin.datePurchased.slice(0..9)
-        holder.coinPricePurchasedTextView.text = coin.coin.pricePurchased.toString() + "€"
-        holder.coinPriceActualTextView.text = coin.coinWithUpdate.priceActual.toString() + "€"
-        holder.coinPriceChangedPercentTextView.text = coin.coin.priceChangedPercent.toString() + "%"
+        holder.coinPricePurchasedTextView.text = String.format("%.2f€", coin.coin.pricePurchased)
+        holder.coinPriceActualTextView.text = String.format("%.2f€", coin.coinWithUpdate.priceActual)
+        holder.coinPriceChangedPercentTextView.text = String.format("%.2f%%",coin.coin.priceChangedPercent)
+
+        val percentTextColor = getResourceColor(coin.coin.priceChangedPercent)
+        holder.coinPriceChangedPercentTextView.setTextColor(ContextCompat.getColor(holder.coinPriceChangedPercentTextView.context, percentTextColor))
 
 
         holder.listItemContactRootView.setOnClickListener{ view ->
@@ -51,6 +51,14 @@ class WatchlistAdapter(private var coins: List<CoinWithUpdate>,
         }
     }
 
+    private fun getResourceColor(number: Double): Int {
+        var stringResourceColor: Int = R.color.black
+
+        if(number < 0) stringResourceColor = R.color.negative
+        if(number > 0) stringResourceColor = R.color.positive
+
+        return stringResourceColor
+    }
 
     override fun getItemCount(): Int {
         return coins.size

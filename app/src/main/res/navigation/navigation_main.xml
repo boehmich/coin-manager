@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/watchlistFragment"
         android:name="com.example.coinmanager.watchlist.WatchlistFragment"
-        android:label="Watchlist"
+        android:label="@string/watchlist"
         tools:layout="@layout/watchlist_fragment" >
         <action
             android:id="@+id/action_watchlistFragment_to_coinEditFragment"
@@ -17,12 +17,12 @@
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.coinmanager.map.MapFragment"
-        android:label="Maps"
+        android:label="@string/map"
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/coinFragment"
         android:name="com.example.coinmanager.coin.CoinFragment"
-        android:label="Coin"
+        android:label="@string/coin"
         tools:layout="@layout/coin_fragment" >
         <action
             android:id="@+id/action_coinFragment_to_watchlistFragment"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/coinlistFragment"
         android:name="com.example.coinmanager.coinlist.CoinlistFragment"
-        android:label="Coinlist"
+        android:label="@string/coinlist"
         tools:layout="@layout/activity_main" >
         <action
             android:id="@+id/action_coinlistFragment_to_coinFragment"
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/coinEditFragment"
         android:name="com.example.coinmanager.coin.CoinEditFragment"
-        android:label="Coin"
+        android:label="@string/edit_coin"
         tools:layout="@layout/coin_fragment" >
         <argument
             android:name="coin"

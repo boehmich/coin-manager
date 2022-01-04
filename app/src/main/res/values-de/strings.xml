@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CoinManager</string>
+    <string name="open">öffnen</string>
+    <string name="close">schließen</string>
+    <string name="coinlist">Coinliste</string>
+    <string name="watchlist">Beobachtunsliste</string>
+    <string name="coin">Coin</string>
+    <string name="edit_coin">Bearbeite Coin</string>
+    <string name="map">Karte</string>
+    <string name="exchange">Börse</string>
+    <string name="purchased_price">Kaufpreis</string>
+    <string name="date">Datum</string>
+    <string name="save">speichern</string>
+    <string name="update">updaten</string>
+    <string name="add_to_watchlist">zur Beobachtunsliste hinzufügen</string>
+    <string name="current">aktuell</string>
+    <string name="clicked_coordinates">geklickte Koordinaten</string>
+    <string name="fh">Das ist die FH Technikum Wien</string>
+    <string name="marker">Markierung</string>
+    <string name="cancel">abbrechen</string>
+    <string name="delete">löschen</string>
+    <string name="edit">bearbeiten</string>
+    <string name="watchlist_action">Wählen Sie eine Option für %1$s aus:</string>
+    <string name="enter_exchange">Bitte geben Sie eine Börse an.</string>
+    <string name="enter_price">Bitte geben Sie einen Preis ein.</string>
+    <string name="watchlist_delete_action">Wollen Sie den Coin wirklich löschen?</string>
+    <string name="map_delete_action">Wollen Sie \"%1$s\" wirklich löschen?</string>
+</resources>

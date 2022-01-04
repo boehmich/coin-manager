@@ -22,13 +22,13 @@
             android:id="@+id/tvCoinFragmentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Coin"
+            android:text="@string/coin"
             android:textSize="40sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Börse"
+            android:hint="@string/exchange"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -42,7 +42,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kaufpreis"
+            android:hint="@string/purchased_price"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -56,7 +56,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Datum"
+            android:hint="@string/date"
             android:layout_marginTop="10dp" >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Save Coin"
+        android:text="@string/save"
         app:layout_constraintEnd_toEndOf="@+id/linearLayoutCoinFragment"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCoinFragment" />
 

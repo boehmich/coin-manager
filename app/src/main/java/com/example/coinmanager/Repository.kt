@@ -1,6 +1,7 @@
 package com.example.coinmanager
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.coinmanager.database.CoinManagerDatabase
 import com.example.coinmanager.web.CoinWebService
 import com.example.coinmanager.models.CoinUpdateWebEntity
@@ -17,6 +18,8 @@ class Repository(
     private val coinWebService: CoinWebService) {
 
     val coins = database.getCoinDao().readAll()
+
+    //val coinlistLiveData = MutableLiveData(ArrayList<CoinlistCoin>())
 
     fun getCoinsFromWebservice(onComplete: (ArrayList<CoinlistCoin>) -> Unit) {
         coinWebService.getAllCoins(100,"EUR").enqueue(object : Callback<CoinWebEntity> {
