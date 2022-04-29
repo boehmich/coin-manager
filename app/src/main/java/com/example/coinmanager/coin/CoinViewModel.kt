@@ -4,8 +4,14 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.coinmanager.*
 import com.example.coinmanager.models.CoinlistCoin
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CoinViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+@HiltViewModel
+class CoinViewModel @Inject constructor(
+    private val repository: Repository,
+    private val savedStateHandle: SavedStateHandle
+    ) : ViewModel() {
 
     val selectedCoin = savedStateHandle.get<CoinlistCoin>("coin")!!
 

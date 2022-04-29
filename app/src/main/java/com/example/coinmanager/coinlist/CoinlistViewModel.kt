@@ -1,14 +1,17 @@
 package com.example.coinmanager.coinlist
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.coinmanager.*
 import com.example.coinmanager.models.CoinlistCoin
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CoinlistViewModel : ViewModel() {
+@HiltViewModel
+class CoinlistViewModel @Inject constructor(
+    private val repository: Repository
+) : ViewModel() {
 
     private val coinlistLiveData = MutableLiveData<ArrayList<CoinlistCoin>>()
     val coinlist: LiveData<ArrayList<CoinlistCoin>> get() = coinlistLiveData

@@ -3,6 +3,7 @@ package com.example.coinmanager.coin
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
@@ -13,8 +14,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.coinmanager.R
 import com.google.android.material.textfield.TextInputEditText
-import java.util.*
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class CoinEditFragment : Fragment(R.layout.coin_fragment) {
 
     private val viewModel: CoinEditViewModel by viewModels()
@@ -22,7 +25,9 @@ class CoinEditFragment : Fragment(R.layout.coin_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.e("inEditFragment", "YESSSSSSSSSSSS")
         val coin = viewModel.selectedCoin
+        Log.e("Coin", "$coin")
 
         val tvCoinName: TextView = view.findViewById(R.id.tvCoinFragmentName)
         tvCoinName.setText(coin.coinWithUpdate.name)

@@ -10,7 +10,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.coinmanager.R
 import com.example.coinmanager.adapter.CoinlistAdapter
 import com.example.coinmanager.models.CoinlistCoin
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CoinlistFragment : Fragment(R.layout.coinlist_fragment) {
 
     private lateinit var recyclerView: RecyclerView
@@ -21,8 +23,9 @@ class CoinlistFragment : Fragment(R.layout.coinlist_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recyclerViewCoinlist)
-        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshCoinlist)
+        viewModel.updateCoinsCoinlist();
 
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshCoinlist)
         swipeRefreshLayout.setOnRefreshListener {
             viewModel.updateCoinsCoinlist()
         }
@@ -31,7 +34,6 @@ class CoinlistFragment : Fragment(R.layout.coinlist_fragment) {
             refreshCoinsInWatchlist(ArrayList(it))
             swipeRefreshLayout.isRefreshing = false
         }
-
     }
 
     private fun refreshCoinsInWatchlist(coinsCoinlist: ArrayList<CoinlistCoin>) {

@@ -18,7 +18,10 @@ import androidx.room.Room
 import com.example.coinmanager.database.CoinManagerDatabase
 import com.example.coinmanager.web.createWebService
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+    /*
         val database = Room.databaseBuilder(
             this,
             CoinManagerDatabase::class.java,
@@ -40,6 +44,8 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         repository = Repository(database, createWebService())
+
+     */
 
 
         toolbar = findViewById(R.id.toolbar)

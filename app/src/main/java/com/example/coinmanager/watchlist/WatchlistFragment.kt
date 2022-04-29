@@ -12,12 +12,18 @@ import com.example.coinmanager.R
 import com.example.coinmanager.adapter.WatchlistAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import android.content.Context
+import android.util.Log
 import android.view.ContextThemeWrapper
 import androidx.navigation.fragment.findNavController
-import com.example.coinmanager.repository
+import com.example.coinmanager.Repository
 
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
+
+    @Inject lateinit var repository: Repository
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
@@ -26,8 +32,9 @@ class WatchlistFragment : Fragment(R.layout.watchlist_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recyclerViewWatchlist)
-        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshWatchlist)
+        viewModel.updateCoinsWatchlist();
 
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshWatchlist)
         swipeRefreshLayout.setOnRefreshListener {
             viewModel.updateCoinsWatchlist()
         }

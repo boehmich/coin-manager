@@ -13,8 +13,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.coinmanager.R
 import com.google.android.material.textfield.TextInputEditText
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class CoinFragment : Fragment(R.layout.coin_fragment) {
 
     private val viewModel: CoinViewModel by viewModels()

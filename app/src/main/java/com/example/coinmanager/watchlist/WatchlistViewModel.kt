@@ -5,9 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.coinmanager.CoinWithUpdate
-import com.example.coinmanager.repository
+import com.example.coinmanager.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class WatchlistViewModel : ViewModel() {
+@HiltViewModel
+class WatchlistViewModel @Inject constructor(
+    private val repository: Repository
+) : ViewModel() {
 
     val readCoinsWatchlist: LiveData<List<CoinWithUpdate>> = Transformations.map(repository.coins) { list ->
         list.forEach {

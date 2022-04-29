@@ -10,8 +10,9 @@ import com.example.coinmanager.models.CoinlistCoin
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-lateinit var repository: Repository
+//lateinit var repository: Repository
 
 class Repository(
     private val database: CoinManagerDatabase,
