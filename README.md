@@ -1,8 +1,14 @@
 # Coin Manager App
 
-### Beschreibung
+## About
+The app is intended to provide an overview of purchased cryptocoins.
+On the home page the first 100 coins of the CoinmarketCap Api are loaded and displayed. 
+By interweaving the swiperefresher, the app fetches the id, name, symbol, slug, percentage change of the last hour, day, week and the current value of the coins.
+One can add each coin to a local watchlist. The purchase price and the date of purchase have to be entered. In the watchlist, the current values of the coins are loaded by activating the swiperefresher. Then the percentage change of the coins is calculated and displayed.
 
-<p>Die App soll einen Überblick über gekaufte Kryptocoins bieten. 
-<br>
-<p>Dazu werden im CoinlistFragment die ersten 100 Coins der CoinmarketCap Api geladen und angezeigt (Retrofit). Aktiviert man im CoinlistFragment den Swiperefresher, holt sich die App die api ID, den Namen, das Symbol, den Slug, die prozentuelle Änderung der letzten Stunde, des letzten Tages, der letzten Woche und den aktuellen Wert der Coins.
-Clickt man einen Coin der geladenen Liste an, wird man auf das CoinFragment weitergeleitet. Hier wird die Plattform (Kryptobörse), bei der man den ausgewählten Coin gekauft hat, angegeben. Kaufpreis und das Datum des Kaufes werden von der Coinlist übernommen, können aber geändert werden. Clickt man auf "add to watchlist" wird der Coin mit den angegeben Daten in der Watchlist gespeichert (GoogleRoom).
+
+### MVVM pattern
+### GoogleRoom
+### Retrofit
+### GoogleMaps
+### Hilt (Dependency Injection)
